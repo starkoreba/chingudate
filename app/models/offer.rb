@@ -1,4 +1,5 @@
 class Offer < ApplicationRecord
+  # creator of the offer
   belongs_to :user
   has_many :bookings, dependent: :destroy
   validates :title, :description, presence: true
