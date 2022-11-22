@@ -19,11 +19,15 @@ class OffersController < ApplicationController
     @offer = Offer.new(params_offer)
     @offer.user = current_user
     autorize @offer
-    if @create.save
+    if @offer.save
       redirect_to offer_path(@offer)
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def
+
   end
 
   private
