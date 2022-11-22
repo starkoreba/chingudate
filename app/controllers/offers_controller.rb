@@ -1,6 +1,6 @@
 class OffersController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
-  before_action :set_offer, only: %i[show]
+  before_action :set_offer, only: %i[show edit update destroy]
 
   def index
     @offers = Offer.all
@@ -26,8 +26,24 @@ class OffersController < ApplicationController
     end
   end
 
-  def
+  def edit
+    authorize @offer
+    # [...]
+  end
 
+  def update
+    authorize @offer # Add this line
+    # [...]
+    if @offer.save
+      @offer.update
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @offer.destroy
+    authorize @offer # Add this line
   end
 
   private
