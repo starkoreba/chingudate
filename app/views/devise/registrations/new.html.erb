@@ -6,11 +6,11 @@ Inner intro START -->
 <section>
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: {turbo: false}) do |f| %>
   <%= f.error_notification %>
-	<div class="container">
+	<div class="container mb-5">
 		<div class="row">
       <div class="col-md-10 col-lg-8 col-xl-6 mx-auto">
         <div class="bg-primary bg-opacity-10 rounded p-4 p-sm-5">
-					<h2>Create your free account </h2>
+					<h2>Create your free account</h2>
 					<!-- Form START -->
 					<form class="mt-4 form-inputs">
 						<!-- Nickname -->
@@ -50,7 +50,8 @@ Inner intro START -->
 								<%= f.button :submit, "Sign up" %>
 							</div>
 							<div class="col-sm-8 text-sm-end">
-								<span>Have an account? <a href="signin.html"><u>Sign in</u></a></span>
+
+								<span>Have an account? <%= render "devise/shared/links" %></span>
 							</div>
 						</div>
 					</form>
@@ -60,7 +61,6 @@ Inner intro START -->
     </div>
 	</div>
 <% end %>
-<%= render "devise/shared/links" %>
 </section>
 <!-- =======================
 Inner intro END -->
