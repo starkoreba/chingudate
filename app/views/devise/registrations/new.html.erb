@@ -1,28 +1,69 @@
-<h2>Sign up</h2>
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
 
+<!-- =======================
+Inner intro START -->
+<section>
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: {turbo: false}) do |f| %>
   <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :nickname %>
-    <%= f.input :city %>
-    <%= f.input :phone_number %>
-    <%= f.input :email,
+	<div class="container">
+		<div class="row">
+      <div class="col-md-10 col-lg-8 col-xl-6 mx-auto">
+        <div class="bg-primary bg-opacity-10 rounded p-4 p-sm-5">
+					<h2>Create your free account </h2>
+					<!-- Form START -->
+					<form class="mt-4 form-inputs">
+						<!-- Nickname -->
+						<div class="mb-3">
+							<%= f.input :nickname %>
+						</div>
+						<!-- City -->
+						<div class="mb-3">
+							<%= f.input :city %>
+						</div>
+						<!-- Phone Number -->
+						<div class="mb-3">
+							<%= f.input :phone_number %>
+						</div>
+            <!-- Email -->
+              <%= f.input :email,
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
+            <!-- Password -->
+              <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
+            <!-- Password confirmatiokn -->
+            <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
+						<!-- Checkbox -->
+						<div class="mb-3 form-check">
+							<input type="checkbox" class="form-check-input" id="exampleCheck1">
+							<label class="form-check-label" for="exampleCheck1">Yes i'd also like to sign up for additional subscription</label>
+						</div>
+						<!-- Button -->
+						<div class="row align-items-center form-actions">
+							<div class="col-sm-4 btn btn-primary">
+								<%= f.button :submit, "Sign up" %>
+							</div>
+							<div class="col-sm-8 text-sm-end">
+								<span>Have an account? <a href="signin.html"><u>Sign in</u></a></span>
+							</div>
+						</div>
+					</form>
+					<!-- Form END -->
+        </div>
+      </div>
+    </div>
+	</div>
 <% end %>
-
 <%= render "devise/shared/links" %>
+</section>
+<!-- =======================
+Inner intro END -->
+
+</main>
+<!-- **************** MAIN CONTENT END **************** -->
