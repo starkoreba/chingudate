@@ -1,2 +1,16 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner" style="background-image: url('<%= image_path('home_banner1.jpeg')%>">
+  <div class="container">
+    <h1>Create the perfect <strong>date</strong> !</h1>
+    <%= link_to 'Choose your date', root_path, class:"btn btn-success mt-5" %>
+  </div>
+</div>
+
+<div class="container p-5">
+  <div class="container">
+    <div class="row justify-content-between">
+      <div class="col-4">
+        <h1>Why choosing us</h1>
+      </div>
+    </div>
+  </div>
+</div>
