@@ -36,7 +36,7 @@ class OffersController < ApplicationController
     authorize @offer # Add this line
     # [...]
     if @offer.update(params_offer)
-      redirect_to my_offers_path # voir pour changer la route vers l'index de toutes mes offres perso
+      redirect_to my_offers_path
     else
       render :edit, status: :unprocessable_entity
     end
