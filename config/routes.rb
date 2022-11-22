@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :offers do
     resources :bookings
   end
+
+  get 'my_offers', to: 'offers#my_offers'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
