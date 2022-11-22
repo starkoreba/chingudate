@@ -1,0 +1,2 @@
+class WhishesController < ApplicationController
+end

@@ -1,5 +1,6 @@
 class OffersController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
+
   before_action :set_offer, only: %i[show edit update destroy]
 
   def index
@@ -27,14 +28,19 @@ class OffersController < ApplicationController
     end
   end
 
+  # edit update destroy
+  # My offers
+
+  def my_offers
+    @offers = current_user.offers
+  end
+
   def edit
     authorize @offer
-    # [...]
   end
 
   def update
     authorize @offer # Add this line
-    # [...]
     if @offer.update(params_offer)
       redirect_to my_offers_path
     else
