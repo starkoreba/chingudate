@@ -26,10 +26,6 @@ class OffersController < ApplicationController
     end
   end
 
-  def
-
-  end
-
   private
 
   def params_offer
