@@ -4,22 +4,23 @@ class OffersController < ApplicationController
   before_action :set_offer, only: %i[show edit update destroy]
 
   def index
-    @offers = Offer.all
+    @offers = policy_scope(Offer)
+    # @offers = Offer.all
   end
 
   def show
-    autorize @offer
+    authorize @offer
   end
 
   def new
     @offer = Offer.new
-    autorize @offer
+    authorize @offer
   end
 
   def create
     @offer = Offer.new(params_offer)
     @offer.user = current_user
-    autorize @offer
+    authorize @offer
     if @offer.save
       redirect_to offer_path(@offer)
     else
@@ -40,16 +41,21 @@ class OffersController < ApplicationController
 
   def update
     authorize @offer # Add this line
-    if @offer.save
-      @offer.update
+    if @offer.update(params_offer)
+      redirect_to my_offers_path
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
-    @offer.destroy
     authorize @offer # Add this line
+    @offer.destroy
+  end
+
+  def my_offers
+    @my_offers = current_user.offers
+    authorize @my_offers
   end
 
   private
