@@ -12,12 +12,12 @@
             <div class="card-title">
               <h4><%= offer.title %></h4>
             </div>
-            <p><%= offer.city %></p>
+            <p><%= offer.location %></p>
           </div>
           <div class="card-actions">
-            <%= link_to "More info", flat_path(flat) %>
-            <%= link_to "Edit", edit_flat_path(flat), class: "ms-3 text-warning" %>
-            <%= link_to "Remove", flat_path(flat),
+            <%= link_to "More info", offer_path(offer) %>
+            <%= link_to "Edit", edit_offer_path(offer), class: "ms-3 text-warning" %>
+            <%= link_to "Remove", offer_path(offer),
                 data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
                 class: "ms-3 text-danger"
             %>
