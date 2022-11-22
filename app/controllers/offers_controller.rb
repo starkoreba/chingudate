@@ -32,7 +32,8 @@ class OffersController < ApplicationController
 
   def my_offers
     @offers = current_user.offers
-    raise
+  end
+
   def edit
     authorize @offer
   end
