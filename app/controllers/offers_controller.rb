@@ -5,10 +5,11 @@ class OffersController < ApplicationController
 
   def index
     @offers = Offer.all
+    @restaurants = policy_scope(Offer)
   end
 
   def show
-    autorize @offer
+    authorize @offer
   end
 
   def new
