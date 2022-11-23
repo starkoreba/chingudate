@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_bookmark, only: :destroy
+  before_action :set_booking, only: :destroy
   before_action :set_offer, only: %i[new create]
 
   def index
