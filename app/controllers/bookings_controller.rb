@@ -1,10 +1,5 @@
 class BookingsController < ApplicationController
-<<<<<<< HEAD
-  before_action :set_booking, only: %i[edit update destroy]
-  # before_action :set_booking, only: :destroy
-=======
   before_action :set_booking, only: :destroy
->>>>>>> master
   before_action :set_offer, only: %i[new create]
   # voir pour la show : nécessaire si on veut annuler ?
 
@@ -16,7 +11,6 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = current_user.bookings
-    @bookings = policy_scope(Booking)
   end
 
   def create
