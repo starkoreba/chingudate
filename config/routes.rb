@@ -6,8 +6,7 @@ Rails.application.routes.draw do
   end
 
   get 'my_offers', to: 'offers#my_offers'
+  get 'my_bookings', to: 'bookings#my_bookings'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
 end
