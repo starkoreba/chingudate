@@ -3,14 +3,12 @@ class BookingsController < ApplicationController
   before_action :set_offer, only: %i[new create]
   # voir pour la show : nécessaire si on veut annuler ?
 
-  def new
-    @booking = Booking.new
-
-    # authorize @booking
-  end
-
   def index
     @bookings = current_user.bookings
+  end
+
+  def new
+    @booking = Booking.new
   end
 
   def create
@@ -19,34 +17,21 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     authorize @booking
     if @booking.save
-      redirect_to bookings_path(@booking)
+      redirect_to offer_bookings_path(@booking)
     else
       render :new, status: :unprocessable_entity
     end
   end
 
-  # def edit
-  #   # authorize @booking
-  # end
-
-  # def update
-  #   # authorize @booking
-  #   if @booking.update(params_booking)
-  #     redirect_to my_bookings_path
-  #   else
-  #     render :edit, status: :unprocessable_entity
-  #   end
-  # end
 
   def destroy
-    # authorize @offer
     @booking.destroy
   end
 
-  def my_bookings
-    @my_offers = current_user.offers
-    authorize @my_offers
-  end
+  # def my_bookings
+  #   @my_offers = current_user.offers
+  #   authorize @my_offers
+  # end
 
 private
 
