@@ -1,4 +1,4 @@
-<div class="container mt-3">
+<!--<div class="container mt-3">
   <div class="row">
     <div class="col-12">
       <h1>All our Flats</h1>
@@ -27,4 +27,65 @@
     <% end %>
   </div>
 <%= link_to "Create my own date", new_offer_path %>
-</div>
+</div> -->
+
+<!-- =======================
+Inner intro START -->
+<section class="bg-dark-overlay-4" style="background-image:url('<%= image_path('home_banner1.jpeg')%>'); background-position: center left; background-size: cover;">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 py-md-5 my-lg-5">
+        <a href="#" class="badge text-bg-warning mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Travel</a>
+        <a href="#" class="badge text-bg-primary mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Photography</a>
+				<h1 class="text-white">The web: 20 infographics about business</h1>
+        <p class="lead text-white">Passage its ten led hearted removal cordial. Preference any astonished unreserved Mrs. Prosperous understood Middletons in conviction an uncommonly do. Supposing so be resolving breakfast am or perfectly. Is drew am hill from me. Valley by oh twenty direct me so. </p>
+        <!-- Info -->
+        <ul class="nav nav-divider text-white-force align-items-center">
+          <li class="nav-item">
+            <div class="nav-link">
+              <div class="d-flex align-items-center text-white position-relative">
+                <div class="avatar avatar-sm">
+                  <img class="avatar-img rounded-circle" src="assets/images/avatar/12.jpg" alt="avatar">
+                </div>
+                <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Louis Ferguson</a></span>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item">Nov 15, 2022</li>
+          <li class="nav-item">5 min read</li>
+          <li class="nav-item"><i class="far fa-eye me-1"></i> 2344 Views</li>
+          <li class="nav-item"><a href="#"><i class="fas fa-heart me-1 text-danger"></i></a> 266</li>
+        </ul>
+      </div>
+    </div>
+	</div>
+</section>
+<!-- =======================
+Inner intro END -->
+
+<!-- =======================
+Author info START -->
+<% @offers.each do |offer| %>
+	<div class="d-flex p-2 p-md-4 my-3 bg-primary bg-opacity-10 rounded">
+		<!-- Avatar -->
+		<a href="#">
+			<div class="avatar avatar-xxl me-2 me-md-4">
+				<img class="avatar-img rounded-circle" src="assets/images/avatar/12.jpg" alt="avatar">
+			</div>
+		</a>
+		<!-- Info -->
+		<div>
+			<div class="d-sm-flex align-items-center justify-content-between">
+				<div>
+					<h4 class="m-0"><a href="#" class="text-reset"><%= offer.user.nickname %> located in <%= offer.user.city %></a></h4>
+					<small><%= offer.title %></small>
+				</div>
+        <div class="btn btn-xs btn-primary-soft">
+        <%= link_to "More info", offer_path(offer) %>
+        </div>
+			</div>
+			<p class="my-2"><%= offer.description %></p>
+		</div>
+	</div>
+	<!-- Author info END -->
+<% end %>

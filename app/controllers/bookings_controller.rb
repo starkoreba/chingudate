@@ -1,5 +1,7 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: %i[edit update destroy]
+  # before_action :set_booking, only: :destroy
+  # before_action :set_offer, only: %i[new create]
   # voir pour la show : nécessaire si on veut annuler ?
 
   def new
@@ -7,12 +9,17 @@ class BookingsController < ApplicationController
     # authorize @booking
   end
 
+  # def index
+  #   @bookings = current_user.bookings
+  # end
+
   def create
-    @booking = Booking.new(params_booking)
-    # @booking.user = current_user
-    # authorize @booking
+    @booking = Booking.new(booking_params)
+    @booking.offer = @offer
+    @booking.user = current_user
+    authorize @booking
     if @booking.save
-      redirect_to my_bookings_path(@booking)
+      redirect_to bookings_path(@booking)
     else
       render :new, status: :unprocessable_entity
     end
@@ -20,7 +27,6 @@ class BookingsController < ApplicationController
 
   def edit
     # authorize @offer
-
   end
 
   def update
@@ -44,7 +50,15 @@ class BookingsController < ApplicationController
 
 private
 
-def set_booking
-  @booking = Booking.find(params[:id])
-end
+  def set_booking
+    @booking = Booking.find(params[:id])
+  end
+
+  def booking_params
+    params.require(:booking).permit(:start_date, :end_date)
+  end
+
+  def set_offer
+    @offer = Offer.find(params[:offer_id])
+  end
 end
