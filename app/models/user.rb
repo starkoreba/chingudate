@@ -6,4 +6,5 @@ class User < ApplicationRecord
   validates :nickname, :phone_number, :city, presence: true
   has_many :offers, dependent: :destroy
   has_many :bookings
+  has_one_attached :photo
 end
