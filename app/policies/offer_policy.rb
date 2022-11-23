@@ -9,21 +9,13 @@ class OfferPolicy < ApplicationPolicy
   def my_offers?
     true
   end
-
-  def new?
-    create?
-  end
-
+  
   def show?
     true
   end
 
   def create?
     true
-  end
-
-  def edit?
-    update?
   end
 
   def update?
