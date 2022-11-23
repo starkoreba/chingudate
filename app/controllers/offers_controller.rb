@@ -30,10 +30,6 @@ class OffersController < ApplicationController
   # edit update destroy
   # My offers
 
-  def my_offers
-    @offers = current_user.offers
-  end
-
   def edit
     authorize @offer
   end

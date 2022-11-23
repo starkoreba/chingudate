@@ -7,6 +7,5 @@ Rails.application.routes.draw do
 
   get 'my_offers', to: 'offers#my_offers'
   resources :bookings, only: :destroy
-  # get my_offers
   # get my bookings
 end
