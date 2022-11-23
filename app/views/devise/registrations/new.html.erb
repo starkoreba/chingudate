@@ -25,6 +25,10 @@ Inner intro START -->
 						<div class="mb-3">
 							<%= f.input :phone_number %>
 						</div>
+            <!-- User Avatar -->
+            <div class="mb-3">
+              <%= f.input :photo, as: :file %>
+						</div>
             <!-- Email -->
               <%= f.input :email,
                 required: true,
