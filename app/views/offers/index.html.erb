@@ -10,6 +10,8 @@ Banner START -->
 <!-- =======================
 Banner END -->
 
+<!-- =======================
+Author info START -->
 <% @offers.each do |offer| %>
   <!-- =======================
   Author info START -->
@@ -27,12 +29,26 @@ Banner END -->
           <h2><%= offer.user.nickname %></h2>
           <h3><%= offer.title %></h3>
           <p><%= offer.description %></p>
+          <h4>Available from <%= offer.start_date %> to <%= offer.end_date %></h4>
+          <%= link_to "More info", offer_path(offer) %>
         </div>
-        <h4><%= offer.start_date.strftime("%d/%m/%Y at %I:%M%p") %> to <%= offer.end_date.strftime("%d/%m/%Y at %I:%M%p")%></h4>
-        <%# <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" /> %>
-        <%= cl_image_tag(offer.user.photo.key, class: "card-trip-user avatar-bordered", crop: :fill) %>
+        <h2 class="card-trip-pricing">€99.99</h2>
+        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
       </div>
     </div>
   </div>
-  <!-- Author info END -->
-  <% end %>
+<% end %>
+<!-- =======================
+Author info END -->
+
+<!-- =======================
+Map START -->
+<div class="container">
+  <div style="width: 100%; height: 600px;"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+</div>
+  <!-- =======================
+Map END -->
