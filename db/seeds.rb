@@ -28,9 +28,9 @@ user1.photo.attach(io: mel_photo, filename: "mel.png", content_type: "image/png"
 user1.save
 # un pour le parcours presta
 
-offer1 = user1.offers.create!(title:'WE du 17 décembre', description: 'Disponible le week-end du 15 décembre pour t accompagner. Région de Bordeaux ou des alentours. Véhiculée et autonome, je fais en sorte de repondre au mieux aux demandes de chacun.', location:'Bordeaux', start_date: '2022-12-17 10:00:00', end_date: '2022-12-18 21:00:00')
+offer1 = user1.offers.create!(title:'WE du 17 décembre', description: 'Disponible le week-end du 15 décembre pour t accompagner. Région de Bordeaux ou des alentours. Véhiculée et autonome, je fais en sorte de repondre au mieux aux demandes de chacun.', location:'Bordeaux', start_date: '2022-12-17 10:00:00', end_date: '2022-12-18 21:00:00', price: 99)
 
-offer2 = user1.offers.create!(title:'semaine du 5 décembre', description: 'Vacances d hiverblablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablabla', location:'Bordeaux', start_date: '2022-12-05 19:00:00', end_date: '2022-12-11 23:00:00')
+offer2 = user1.offers.create!(title:'semaine du 5 décembre', description: 'Vacances d hiverblablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablabla', location:'Bordeaux', start_date: '2022-12-05 19:00:00', end_date: '2022-12-11 23:00:00', price: 120)
 
 rodolphe_photo = URI.open("https://pbs.twimg.com/profile_images/618009284891287552/2zZ7qkl1_400x400.jpg")
 user2 = User.new(email: 'rodolphe@mail.com', password: 'azerty', nickname:'Rodolphe', city:'Bordeaux', phone_number:'07 77 77 77 77')
