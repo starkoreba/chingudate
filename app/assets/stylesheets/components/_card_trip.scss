@@ -9,10 +9,17 @@
   }
 }
 
-.card-trip > img {
+.card-trip > a > img {
   height: 200px;
   width: 100%;
   object-fit: cover;
+}
+
+.card-trip h4 {
+  font-size: 14px;
+  font-weight: 400;
+  text-align: right;
+  margin: 0;
 }
 
 .card-trip h2 {
