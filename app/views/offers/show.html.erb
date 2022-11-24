@@ -3,15 +3,17 @@ Offer info START -->
 <section>
   <div class="container">
     <div class="card-trip">
+      <%= link_to offer_path(@offer) do %>
       <img src="https://source.unsplash.com/random/?Love/" />
+      <% end %>
       <div class="card-trip-infos">
         <div>
           <h2><%= @offer.user.nickname %></h2>
           <h3><%= @offer.title %></h3>
           <p><%= @offer.description %></p>
         </div>
-        <h2 class="card-trip-pricing">€99.99</h2>
-        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+        <h4><%= @offer.start_date.strftime("%d/%m/%Y at %I:%M%p") %> to <%= @offer.end_date.strftime("%d/%m/%Y at %I:%M%p")%></h4>
+        <%= cl_image_tag(@offer.user.photo.key, class: "card-trip-user avatar-bordered", crop: :fill) %>
       </div>
       <div class="p-3">
         <%= simple_form_for [@offer, @booking] do |f| %>
