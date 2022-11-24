@@ -3,7 +3,7 @@ class BookingsController < ApplicationController
   before_action :set_offer, only: %i[new create]
 
   def index
-    @bookings = current_user.bookings
+    @bookings = Booking.all
   end
 
   def new
@@ -14,19 +14,22 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.offer = @offer
     @booking.user = current_user
+    @booking.status = 0
     authorize @booking
     if @booking.save
-      redirect_to offer_bookings_path(@booking) #my_bookings_path
+      redirect_to my_bookings_path(@booking)
     else
       render :new, status: :unprocessable_entity
     end
   end
 
-
   def destroy
     @booking.destroy
   end
 
+  def my_bookings
+    @my_bookings = current_user.bookings
+  end
   # def my_bookings
   #   @my_offers = current_user.offers
   #   @my_bookings = @my_offers.bookings
