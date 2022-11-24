@@ -15,6 +15,9 @@ Offer info START -->
         <h4><%= @offer.start_date.strftime("%d/%m/%Y at %I:%M%p") %> to <%= @offer.end_date.strftime("%d/%m/%Y at %I:%M%p")%></h4>
         <%= cl_image_tag(@offer.user.photo.key, class: "card-trip-user avatar-bordered", crop: :fill) %>
       </div>
+      <% if current_user == @offer.user %>
+      <!--afficher une alerte creation succesfull-->
+      <% else %>
       <div class="p-3">
         <%= simple_form_for [@offer, @booking] do |f| %>
           <%= f.input :start_date, html5: true %>
@@ -22,6 +25,7 @@ Offer info START -->
           <%= f.submit class: "btn btn-flat" %>
         <% end %>
       </div>
+      <% end %>
     </div>
   </div>
 </section>
