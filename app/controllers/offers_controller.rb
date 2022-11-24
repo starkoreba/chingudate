@@ -28,6 +28,10 @@ class OffersController < ApplicationController
     end
   end
 
+  def my_offers
+    @my_offers = current_user.offers
+  end
+
   # edit update destroy
   # My offers
 
