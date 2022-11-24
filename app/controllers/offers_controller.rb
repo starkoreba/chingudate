@@ -23,6 +23,7 @@ class OffersController < ApplicationController
     authorize @offer
     if @offer.save
       redirect_to offer_path(@offer)
+      flash[:notice] = "Created"
     else
       render :new, status: :unprocessable_entity
     end
@@ -57,7 +58,7 @@ class OffersController < ApplicationController
   private
 
   def params_offer
-    params.require(:offer).permit(:title, :description, :location, :start_date, :end_date)
+    params.require(:offer).permit(:title, :description, :location, :picture, :start_date, :end_date)
   end
 
   def set_offer
