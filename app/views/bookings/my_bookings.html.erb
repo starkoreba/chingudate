@@ -1,0 +1,25 @@
+<div class="container">
+  <h1>My boookings</h1>
+  <!-- =======================
+  Booking card START -->
+  <% @my_bookings.each do |booking| %>
+  <div class="notification">
+    <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />
+    <div class="notification-content">
+      <p><%= booking.user.nickname %></p>
+      <p><small>from <%= booking.start_date.strftime("%d/%m/%Y %H:%M") %> to <%= booking.end_date.strftime("%d/%m/%Y %H:%M") %></small></p>
+    </div>
+    <%# <div> %>
+      <%# <% total_price = (@booking.end_date - @booking.start_date) *  %>
+      <%# @offer. %>
+    <%# </div>  %>
+    <div class="notification-actions">
+      <%= link_to my_bookings_path(current_user), data: { turbo_method: :delete,  turbo_confirm: "Are you sure?" } do %>
+        <i class="far fa-trash-alt" aria-hidden="true"></i>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+  <!-- =======================
+  Booking card END -->
+</div>
