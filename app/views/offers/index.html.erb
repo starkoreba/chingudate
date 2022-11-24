@@ -11,8 +11,8 @@ Banner START -->
 Banner END -->
 
 <% @offers.each do |offer| %>
-    <!-- =======================
-    Author info START -->
+  <!-- =======================
+  Author info START -->
   <div class="container">
     <div class="card-trip mt-5 mb-5 rounded">
       <%= link_to offer_path(offer) do %>
@@ -28,6 +28,7 @@ Banner END -->
         <%# <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" /> %>
         <%= cl_image_tag(offer.user.photo.key, class: "card-trip-user avatar-bordered", crop: :fill) %>
       </div>
+    </div>
   </div>
-    <!-- Author info END -->
+  <!-- Author info END -->
   <% end %>
