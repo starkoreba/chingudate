@@ -10,24 +10,24 @@ Banner START -->
 <!-- =======================
 Banner END -->
 
-<!-- =======================
-Author info START -->
 <% @offers.each do |offer| %>
-	<div class="container">
+    <!-- =======================
+    Author info START -->
+  <div class="container">
     <div class="card-trip mt-5 mb-5 rounded">
+      <%= link_to offer_path(offer) do %>
       <img src="https://source.unsplash.com/random/?Lovely/" />
+      <% end %>
       <div class="card-trip-infos">
         <div>
           <h2><%= offer.user.nickname %></h2>
           <h3><%= offer.title %></h3>
           <p><%= offer.description %></p>
-          <%= link_to "More info", offer_path(offer) %>
-          <h4><%= offer.start_date.strftime("%d/%m/%Y at %I:%M%p") %> to <%= offer.end_date.strftime("%d/%m/%Y at %I:%M%p")%></h4>
         </div>
+        <h4><%= offer.start_date.strftime("%d/%m/%Y at %I:%M%p") %> to <%= offer.end_date.strftime("%d/%m/%Y at %I:%M%p")%></h4>
         <%# <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" /> %>
         <%= cl_image_tag(offer.user.photo.key, class: "card-trip-user avatar-bordered", crop: :fill) %>
       </div>
-    </div>
   </div>
-<% end %>
-<!-- Author info END -->
+    <!-- Author info END -->
+  <% end %>

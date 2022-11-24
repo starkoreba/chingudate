@@ -24,7 +24,7 @@
   }
 }
 
-.card-trip > img {
+.card-trip > a > img {
   height: 200px;
   width: 100%;
   object-fit: cover;
@@ -61,6 +61,6 @@
 .card-trip-infos .card-trip-user {
   position: absolute;
   right: 16px;
-  top: -20px;
-  width: 40px;
+  top: -25px;
+  width: 50px;
 }
