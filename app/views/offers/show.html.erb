@@ -4,7 +4,11 @@ Offer info START -->
   <div class="container">
     <div class="card-trip rounded">
       <%= link_to offer_path(@offer) do %>
-      <img src="https://source.unsplash.com/random/?Love/" />
+      <% if @offer.picture.attached? %>
+      <%= cl_image_tag(@offer.picture.key, crop: :fill) %>
+      <% else %>
+      <img src="https://source.unsplash.com/random/?Lovely/" />
+      <% end %>
       <% end %>
       <div class="card-trip-infos">
         <div>
