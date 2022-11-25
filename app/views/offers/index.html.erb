@@ -29,11 +29,10 @@ Author info START -->
           <h2><%= offer.user.nickname %></h2>
           <h3><%= offer.title %></h3>
           <p><%= offer.description %></p>
-          <h4>Available from <%= offer.start_date %> to <%= offer.end_date %></h4>
-          <%= link_to "More info", offer_path(offer) %>
         </div>
-        <h2 class="card-trip-pricing">€99.99</h2>
-        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+        <h4><%= offer.start_date.strftime("%d/%m/%Y at %I:%M%p") %> to <%= offer.end_date.strftime("%d/%m/%Y at %I:%M%p")%></h4>
+        <%# <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" /> %>
+        <%= cl_image_tag(offer.user.photo.key, class: "card-trip-user avatar-bordered", crop: :fill) %>
       </div>
     </div>
   </div>
