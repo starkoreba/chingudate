@@ -43,6 +43,7 @@ class OffersController < ApplicationController
     authorize @offer
     if @offer.update(params_offer)
       redirect_to my_offers_path
+      flash[:notice] = "Updated!"
     else
       render :edit, status: :unprocessable_entity
     end

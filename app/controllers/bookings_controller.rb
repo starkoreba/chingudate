@@ -31,7 +31,7 @@ class BookingsController < ApplicationController
     @my_bookings = current_user.bookings
   end
 
-private
+  private
 
   def set_booking
     @booking = Booking.find(params[:id])
