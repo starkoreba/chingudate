@@ -1,23 +1,30 @@
-<h1>My offers</h1>
-<% @my_offers.each do |offer| %>
- <!-- =======================
-  Author info START -->
-  <div class="container">
-    <div class="card-trip mt-5 mb-5 rounded">
-      <%= link_to offer_bookings_path(offer) do %>
-      <img src="https://source.unsplash.com/random/?Lovely/" />
-      <% end %>
-      <div class="card-trip-infos">
-        <div>
-          <h2><%= offer.user.nickname %></h2>
-          <h3><%= offer.title %></h3>
-          <p><%= offer.description %></p>
-        </div>
-        <h4><%= offer.start_date.strftime("%d/%m/%Y at %I:%M%p") %> to <%= offer.end_date.strftime("%d/%m/%Y at %I:%M%p")%></h4>
-        <%# <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" /> %>
-        <%= cl_image_tag(offer.user.photo.key, class: "card-trip-user avatar-bordered", crop: :fill) %>
-      </div>
-    </div>
+<div class="container">
+  <div class="row text-center">
+    <h1>My offers</h1>
   </div>
-  <!-- Author info END -->
-<% end %>
+  <div class="row">
+    <% @my_offers.each do |offer| %>
+    <!-- =======================
+      Author info START -->
+      <div class="container">
+        <div class="card-trip mt-5 mb-5 rounded">
+          <%= link_to offer_bookings_path(offer) do %>
+          <img src="https://source.unsplash.com/random/?Lovely/" />
+          <% end %>
+          <div class="card-trip-infos">
+            <div>
+              <h2><%= offer.user.nickname %></h2>
+              <h3><%= offer.title %></h3>
+              <p><%= offer.description %></p>
+              <p><%= link_to "See the offer's booking(s)", offer_bookings_path(offer) %></p>
+            </div>
+            <h4><%= offer.start_date.strftime("%d/%m/%Y at %I:%M%p") %> to <%= offer.end_date.strftime("%d/%m/%Y at %I:%M%p")%></h4>
+            <%# <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" /> %>
+            <%= cl_image_tag(offer.user.photo.key, class: "card-trip-user avatar-bordered", crop: :fill) %>
+          </div>
+        </div>
+      </div>
+      <!-- Author info END -->
+    <% end %>
+  </div>
+</div>
