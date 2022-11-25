@@ -5,6 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :nickname, :phone_number, :city, presence: true
   has_many :offers, dependent: :destroy
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
   has_one_attached :photo
 end
