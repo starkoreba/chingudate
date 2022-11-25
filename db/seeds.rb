@@ -22,6 +22,9 @@ User.destroy_all
 #     phone_number: '06 66 66 66 66'
 #   )
 
+# puts 'Creating 2 users'
+
+
 # mel_photo = URI.open("https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1668689575/h2jd7dodo4ulakrbgt8j.jpg")
 # user1 = User.new(email: 'mel@mail.com', password: 'azerty', nickname:'Mel', city:'Bordeaux', phone_number:'06 66 66 66 66')
 # user1.photo.attach(io: mel_photo, filename: "mel.png", content_type: "image/png")
@@ -38,28 +41,4 @@ User.destroy_all
 # user2.save
 # un pour le parcours utilisateur
 
-
-  # puts 'Creating offers'
-  # 6.times do
-  #   user.offers.create!(
-  #     title: Faker::Address.street_addressraisl,
-  #     description: Faker::Lorem.paragraph_by_chars(number: 256, supplemental: false),
-  #     location: Faker::Address.city,
-  #     start_date: '2022-11-30 10:00:00',
-  #     end_date: '2022-12-01 21:00:00'
-  #   )
-  # end
-# end
 puts 'Finished!'
-
-# puts 'Clearing Bookings'
-# Booking.destroy_all
-
-# puts 'Creating 2 bookings'
-
-# booking1 = { start_date: 2022-11-30 10:00:00, end_date: 2022-12-01 21:00:00 }
-# booking1.save!
-# booking2 = { start_date: 2022-11-29 10:00:00, end_date: 2022-12-01 21:00:00 }
-# booking2.save!
-# end
-# puts 'Finished!'
