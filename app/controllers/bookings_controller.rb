@@ -14,11 +14,10 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.offer = @offer
     @booking.user = current_user
-    @booking.status = 0
     authorize @booking
     if @booking.save
       redirect_to my_bookings_path(@booking)
-      flash[:notice] = "Succesfully booked"
+      flash[:notice] = "Succesfully booked!"
     else
       render "offers/show", status: :unprocessable_entity
     end

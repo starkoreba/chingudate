@@ -35,15 +35,12 @@ class OffersController < ApplicationController
     end
   end
 
-  # edit update destroy
-  # My offers
-
   def edit
     authorize @offer
   end
 
   def update
-    authorize @offer # Add this line
+    authorize @offer
     if @offer.update(params_offer)
       redirect_to my_offers_path
     else
@@ -52,7 +49,7 @@ class OffersController < ApplicationController
   end
 
   def destroy
-    authorize @offer # Add this line
+    authorize @offer
     @offer.destroy
   end
 
