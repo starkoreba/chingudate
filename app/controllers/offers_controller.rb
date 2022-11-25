@@ -35,7 +35,7 @@ class OffersController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-
+  
   def edit
     authorize @offer
   end
