@@ -29,7 +29,7 @@ class OffersController < ApplicationController
     authorize @offer
     if @offer.save
       redirect_to offer_path(@offer)
-      flash[:notice] = "Created"
+      flash[:notice] = "Created!"
     else
       render :new, status: :unprocessable_entity
     end
