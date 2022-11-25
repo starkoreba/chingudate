@@ -9,46 +9,49 @@ Banner START -->
 </div>
 <!-- =======================
 Banner END -->
-
-<!-- =======================
-Author info START -->
-<% @offers.each do |offer| %>
+<div class="row">
   <!-- =======================
   Author info START -->
-  <div class="container">
-    <div class="card-trip mt-5 mb-5 rounded">
-      <%= link_to offer_path(offer) do %>
-      <% if offer.picture.attached? %>
-      <%= cl_image_tag(offer.picture.key, crop: :fill) %>
-      <% else %>
-      <img src="https://source.unsplash.com/random/?Lovely/" />
-      <% end %>
-      <% end %>
-      <div class="card-trip-infos">
-        <div>
-          <h2><%= offer.user.nickname %></h2>
-          <h3><%= offer.title %></h3>
-          <p><%= offer.description %></p>
-          <h4>Available from <%= offer.start_date %> to <%= offer.end_date %></h4>
-          <%= link_to "More info", offer_path(offer) %>
+  <div class="col-12 col-lg-8">
+    <% @offers.each do |offer| %>
+      <!-- =======================
+      Author info START -->
+      <div class="container">
+        <div class="card-trip mt-5 mb-5 rounded">
+          <%= link_to offer_path(offer) do %>
+          <% if offer.picture.attached? %>
+          <%= cl_image_tag(offer.picture.key, crop: :fill) %>
+          <% else %>
+          <img src="https://source.unsplash.com/random/?Lovely/" />
+          <% end %>
+          <% end %>
+          <div class="card-trip-infos">
+            <div>
+              <h2><%= offer.user.nickname %></h2>
+              <h3><%= offer.title %></h3>
+              <p><%= offer.description.truncate(120) %></p>
+            </div>
+            <h4>From <%= offer.start_date.strftime("%d/%m/%Y %H:%M") %> <br>To <%= offer.end_date.strftime("%d/%m/%Y %H:%M")%></h4>
+            <%# <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" /> %>
+            <%= cl_image_tag(offer.user.photo.key, class: "card-trip-user avatar-bordered", crop: :fill) %>
+          </div>
         </div>
-        <h2 class="card-trip-pricing">€99.99</h2>
-        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+      </div>
+    <% end %>
+    <!-- =======================
+    Author info END -->
+  </div>
+    <!-- =======================
+    Map START -->
+  <div  class="col-12 col-lg-4 mt-5">
+    <div class="container right-position-sticky">
+      <div style="width: 100%; height: 100vh;"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
     </div>
   </div>
-<% end %>
-<!-- =======================
-Author info END -->
-
-<!-- =======================
-Map START -->
-<div class="container">
-  <div style="width: 100%; height: 600px;"
-    data-controller="map"
-    data-map-markers-value="<%= @markers.to_json %>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
+      <!-- =======================
+    Map END -->
 </div>
-  <!-- =======================
-Map END -->

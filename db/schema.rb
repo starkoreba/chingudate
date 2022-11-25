@@ -45,7 +45,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_24_145315) do
   create_table "bookings", force: :cascade do |t|
     t.datetime "start_date"
     t.datetime "end_date"
-    t.integer "status"
+    t.integer "status", default: 0, null: false
     t.bigint "user_id", null: false
     t.bigint "offer_id", null: false
     t.datetime "created_at", null: false

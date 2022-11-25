@@ -8,7 +8,8 @@ class OffersController < ApplicationController
     @markers = @offers.geocoded.map do |offer|
       {
         lat: offer.latitude,
-        lng: offer.longitude
+        lng: offer.longitude,
+        info_window: render_to_string(partial: "info_window", locals: {offer: offer})
       }
     end
   end
@@ -29,34 +30,28 @@ class OffersController < ApplicationController
     authorize @offer
     if @offer.save
       redirect_to offer_path(@offer)
-      flash[:notice] = "Created"
+      flash[:notice] = "Created!"
     else
       render :new, status: :unprocessable_entity
     end
   end
-
-  def my_offers
-    @my_offers = current_user.offers
-  end
-
-  # edit update destroy
-  # My offers
-
+  
   def edit
     authorize @offer
   end
 
   def update
-    authorize @offer # Add this line
+    authorize @offer
     if @offer.update(params_offer)
       redirect_to my_offers_path
+      flash[:notice] = "Updated!"
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
-    authorize @offer # Add this line
+    authorize @offer
     @offer.destroy
   end
 

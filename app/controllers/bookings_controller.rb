@@ -14,12 +14,12 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.offer = @offer
     @booking.user = current_user
-    @booking.status = 0
     authorize @booking
     if @booking.save
       redirect_to my_bookings_path(@booking)
+      flash[:notice] = "Succesfully booked!"
     else
-      render :new, status: :unprocessable_entity
+      render "offers/show", status: :unprocessable_entity
     end
   end
 
@@ -30,12 +30,8 @@ class BookingsController < ApplicationController
   def my_bookings
     @my_bookings = current_user.bookings
   end
-  # def my_bookings
-  #   @my_offers = current_user.offers
-  #   @my_bookings = @my_offers.bookings
-  # end
 
-private
+  private
 
   def set_booking
     @booking = Booking.find(params[:id])

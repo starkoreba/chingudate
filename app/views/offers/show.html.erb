@@ -4,7 +4,11 @@ Offer info START -->
   <div class="container">
     <div class="card-trip rounded">
       <%= link_to offer_path(@offer) do %>
-      <img src="https://source.unsplash.com/random/?Love/" />
+      <% if @offer.picture.attached? %>
+      <%= cl_image_tag(@offer.picture.key, crop: :fill) %>
+      <% else %>
+      <img src="https://source.unsplash.com/random/?Lovely/" />
+      <% end %>
       <% end %>
       <div class="card-trip-infos">
         <div>
@@ -12,7 +16,7 @@ Offer info START -->
           <h3><%= @offer.title %></h3>
           <p><%= @offer.description %></p>
         </div>
-        <h4><%= @offer.start_date.strftime("%d/%m/%Y at %I:%M%p") %> to <%= @offer.end_date.strftime("%d/%m/%Y at %I:%M%p")%></h4>
+        <h4>From <%= @offer.start_date.strftime("%d/%m/%Y %H:%M") %> <br>To <%= @offer.end_date.strftime("%d/%m/%Y %H:%M")%></h4>
         <%= cl_image_tag(@offer.user.photo.key, class: "card-trip-user avatar-bordered", crop: :fill) %>
       </div>
       <% unless current_user == @offer.user %>
